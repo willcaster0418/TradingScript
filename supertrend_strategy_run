@@ -15,3 +15,20 @@ close_atr_short = close - atr * factor
 close_atr_long = close + atr * factor
 close_atr = close_atr_long
 color_atr = color.red
+
+if test_period()
+    if _change < 0 
+        strategy.entry("Long", strategy.long, na, close)
+        strategy.close("Short")
+    else if _change > 0 
+        strategy.entry("Short", strategy.short)
+        strategy.close("Long")
+    else
+        if close < close_atr
+            strategy.close("Short")
+        if close > close_atr
+            strategy.close("Long")
+
+p1 = plot(close_atr, color = color.red)
+p2 = plot(close)
+fill(p1, p2, color=color.new(color_atr, 90))
