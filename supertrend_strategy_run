@@ -1,0 +1,6 @@
+//@version=5
+strategy("Supertrend Strategy", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=15)
+dt_start = timestamp(input(1999, "Y"), input(1, "M") ,input(1, "D"), 0, 0)
+dt_end   = timestamp(input(2100, "Y"), input(4, "M") ,input(13, "D"), 0, 0)
+test_period() => 
+    time >= dt_start and time <= dt_end ? true : false
