@@ -1,0 +1,2 @@
+curl -XGET "http://localhost:9200/_search" -d "{\"query\":{\"match\" : {\"title\" : \"Spirited\"}}}" -H "Content-Type: application/json"
+curl -XPOST "http://localhost:9200/_plugins/_sql" -d "{\"query\":\"SHOW tables LIKE %;\"}" -H "Content-Type: application/json"
