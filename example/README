@@ -1,0 +1,5 @@
+# send message with topic name TEST
+python3 pub.py PUB_TEST
+
+# recv message with topic name TEST
+python3 sub.py SUB_TEST

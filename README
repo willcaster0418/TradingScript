@@ -1,0 +1,11 @@
+# build base image
+docker build -t my_ubuntu_image -f ubuntu.dockerfile .
+# after build first run
+docker run -p 8080:8080 -it --name=my_ubuntu my_ubuntu_image
+
+# after build second run : SERVER #01
+docker start my_ubuntu
+docker attach my_ubuntu
+
+# build and run opensearch : SERVER #02
+docker-compose -f opensearch_compose.yml up -d
