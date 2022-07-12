@@ -22,7 +22,7 @@ class OrderManager:
         self.accounts = {}
         return None
 
-    def execute(self, order):
+    def execute(self):
         return "execute"
 
     def query(self, info):
@@ -38,9 +38,6 @@ from flask import Flask
 app = Flask(__name__)
 oms = OrderManager()
 
-@app.route('/execute')
-def execute():
-    global oms
-    return oms.execute(None)
+app.route('/{}'.format(oms.execute.__name__), methods=['GET'])(oms.execute)
 
 app.run(host="localhost", port=5000, debug=True)
