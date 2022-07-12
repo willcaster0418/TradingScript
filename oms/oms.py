@@ -34,10 +34,11 @@ class OrderManager:
     def synchronize(self, order):
         return None
 
-from flask import Flask
-app = Flask(__name__)
-oms = OrderManager()
+if __name__ == "__main__":
+    from flask import Flask
+    app = Flask(__name__)
+    oms = OrderManager()
 
-app.route('/{}'.format(oms.execute.__name__), methods=['GET'])(oms.execute)
+    app.route('/{}'.format(oms.execute.__name__), methods=['GET'])(oms.execute)
 
-app.run(host="localhost", port=5000, debug=True)
+    app.run(host="localhost", port=5000, debug=True)
